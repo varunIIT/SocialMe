@@ -2,8 +2,14 @@ const express=require('express')
 const app=express()
 const port=5000
 
-require('./config/db_conn')
+require('./config/hbs_config').hbsConfig(app)  //handlebars configuration
+require('./config/db_conn')  // db connection
+
+
 app.use('/',require('./routes/index'))
+
+
+
 app.listen(port,(err)=>{
     if(err){
         console.log(`Error : ${err}`)
