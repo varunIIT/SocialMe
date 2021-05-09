@@ -1,9 +1,15 @@
 const User=require('../models/user')
 
 module.exports.signUp=(req,res)=>{
+    if(req.isAuthenticated()){
+        return res.redirect('/user/profile')
+    }
     res.render('home_sign_up',{title:'SocialMe | sign-up'})
 }
 module.exports.signIn=(req,res)=>{
+    if(req.isAuthenticated()){
+        return res.redirect('/user/profile')
+    }
     res.render('home_sign_in',{title:'SocialMe | sign-in'})
 }
 module.exports.profile=(req,res)=>{

@@ -49,7 +49,7 @@ passport.checkAuthentication=(req,res,next)=>{        //protecting routes if use
 }
 passport.setAuthenticatedUser=(req,res,next)=>{
     if(req.isAuthenticated()){
-        res.locals.user=req.user                 //setting res.locals for access of user data for views
+        res.locals.name=req.user.name              //setting res.locals for access of user data for views
     }
     next()
 }
