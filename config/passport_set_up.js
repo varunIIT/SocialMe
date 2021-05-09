@@ -23,12 +23,12 @@ passport.use(new LocalStrategy({
     }
 ));
 
-passport.serializeUser(function (user, done) {
+passport.serializeUser(function (user, done) {        // storing userId to express session cookie
     //console.log(user)
     done(null, user._id)
 })
 
-passport.deserializeUser(async function (userId, done) {
+passport.deserializeUser(async function (userId, done) {    // populating user from userId and make is as property 'req.user'
     try {
         const user = await User.findById(userId)
         if (user)
@@ -39,13 +39,19 @@ passport.deserializeUser(async function (userId, done) {
         done(err)
     }
 })
-passport.checkAuthentication=(req,res,next)=>{
+passport.checkAuthentication=(req,res,next)=>{        //protecting routes if user is not signed in
     if(req.isAuthenticated()){
         return next()
     }
     
-    res.redirect('/user/sign-in')
+    res.redirect('/user/sign-in')          // redirecting to sign-in page if user is not authenticated and trying to request other endpoints
     
+}
+passport.setAuthenticatedUser=(req,res,next)=>{
+    if(req.isAuthenticated()){
+        res.locals.user=req.user                 //setting res.locals for access of user data for views
+    }
+    next()
 }
 
 module.exports=passport
