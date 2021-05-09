@@ -5,6 +5,8 @@ const port=5000
 require('./config/hbs_config').hbsConfig(app)  //handlebars configuration
 require('./config/db_conn')  // db connection
 
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))  //body parser
 
 app.use('/',require('./routes/index'))
 
