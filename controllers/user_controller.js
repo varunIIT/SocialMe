@@ -1,10 +1,13 @@
 const User=require('../models/user')
 
 module.exports.signUp=(req,res)=>{
-    res.render('home_sign_up')
+    res.render('home_sign_up',{title:'SocialMe | sign-up'})
 }
 module.exports.signIn=(req,res)=>{
-    res.render('home_sign_in')
+    res.render('home_sign_in',{title:'SocialMe | sign-in'})
+}
+module.exports.profile=(req,res)=>{
+    res.render('profile')
 }
 module.exports.createUser=async (req,res)=>{
     if(req.body.password!=req.body.confirmPassword){ 
@@ -23,4 +26,7 @@ module.exports.createUser=async (req,res)=>{
     catch(err){
         console.log(`Error creating user: ${err}`)
     }
+}
+module.exports.createSession=(req,res)=>{
+    res.redirect('/user/profile')
 }
