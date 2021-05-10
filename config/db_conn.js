@@ -7,7 +7,8 @@ mongoose.connect('mongodb://localhost/SocialMe', {
 })
 .then(()=>{
     console.log('db connection successfully')
+    
 })
-.catch(()=>{
+.catch((err)=>{
     console.log('db connection unsuccessfull')
 })
