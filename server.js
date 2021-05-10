@@ -3,7 +3,7 @@ const app=express()
 const port=5000
 const expressSession=require('express-session')
 const passport=require('./config/passport_set_up')
-const MongoStore = require('connect-mongo')
+const MongoStore = require('connect-mongo')//MongoDB to store user's session 
 
 require('./config/hbs_config').hbsConfig(app)//handlebars configuration
 require('./config/db_conn')// db connection
@@ -18,6 +18,7 @@ app.use(expressSession({//express-session set up
     cookie:{
         maxAge:60*60*1000
     },
+    //link between expressSession and MongoDB to store user's session in MongoDB
     store:MongoStore.create({
         mongoUrl: 'mongodb://localhost/SocialMe',
         autoRemove : 'disabled'
@@ -26,6 +27,7 @@ app.use(expressSession({//express-session set up
 
 app.use(passport.initialize())
 app.use(passport.session())
+app.use(passport.setAuthenticatedUser)
 
 app.use('/',require('./routes/index'))
 
