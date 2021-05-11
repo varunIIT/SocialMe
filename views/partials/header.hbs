@@ -1,9 +1,19 @@
 <header>
     <div class="container">
         <div><h2>SocialMe</h2></div>
-        <div>
+       
+         {{#if name}}
+         <div>
+                <a href="/user/Profile">{{name}}</a>
+                <a href="/user/sign-out">Sign Out</a>
+        </div>
+        
+    {{else}}
+         <div>
                 <a href="/user/sign-in">Sign In</a>
                 <a href="/user/sign-up">Sign Up</a>
         </div>
+        
+    {{/if}}
     </div>
 </header>

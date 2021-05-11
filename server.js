@@ -19,7 +19,7 @@ app.use(expressSession({
     resave:false,
     secret:'some long string',
     cookie:{
-        maxAge:60*60*1000
+        maxAge: 60*60*1000
     },
     //link between expressSession and MongoDB to store user's session in MongoDB
     store:MongoStore.create({

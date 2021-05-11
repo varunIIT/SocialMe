@@ -4,13 +4,13 @@ module.exports.signUp=(req,res)=>{
     if(req.isAuthenticated()){//checking if user is already signed-in or not 
         return res.redirect('/user/profile')//if user is already signed in redirect to profile page
     }
-    res.render('home_sign_up',{title:'SocialMe | sign-up'})
+    res.render('home_sign_up',{title:'sign-up'})
 }
 module.exports.signIn=(req,res)=>{
     if(req.isAuthenticated()){//checking if user is already signed-in or not 
         return res.redirect('/user/profile')//if user is already signed in redirect to profile page
     }
-    res.render('home_sign_in',{title:'SocialMe | sign-in'})
+    res.render('home_sign_in',{title:'sign-in'})
 }
 module.exports.profile=(req,res)=>{
     res.render('profile')// render profile page

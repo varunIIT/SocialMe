@@ -1,0 +1,43 @@
+html { height: 100%; }
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin:0px;
+    height: 100%;
+    #content{
+        height: 100%;
+    }
+}
+#header{
+    header{
+        background-color: blue;
+        margin-bottom: 2px;
+        .container{
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            div{
+                margin:0 4px;
+                h2{
+                    color: white;
+                    margin: 10px 0;
+                }
+                a{
+                    text-decoration: none;
+                    margin: 5px;
+                    color: white;
+                }   
+            }
+        }
+    }
+}
+#footer{
+    footer{
+        margin-top: 4px;
+        .container{
+            padding: 4px;
+            text-align: center;
+            background-color :lightgrey;
+            color:grey;
+        }
+    }
+}
