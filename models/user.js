@@ -17,7 +17,7 @@ const userSchema= new Schema({
     }
 
 },{
-    timestamps:true  //to keep track of when user was created or updated
+    timestamps:true//to keep track of when user was created or updated
 })
 
 const User=mongoose.model('User',userSchema)

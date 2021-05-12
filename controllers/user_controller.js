@@ -13,7 +13,7 @@ module.exports.signIn=(req,res)=>{
     res.render('home_sign_in',{title:'sign-in'})
 }
 module.exports.profile=(req,res)=>{
-    res.render('profile')// render profile page
+    res.render('profile',{title:'Profile'})// render profile page
 }
 module.exports.createUser=async (req,res)=>{
     if(req.body.password!=req.body.confirmPassword){// if password and confirm password are not equal redirect back to sign-up page

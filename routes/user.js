@@ -9,5 +9,4 @@ router.post('/create',userController.createUser)
 router.post('/create-session',passport.authenticate('local',{failureRedirect:'/user/sign-in'}),userController.createSession)
 router.get('/profile',passport.checkAuthentication,userController.profile)
 router.get('/sign-out',userController.signOut)
-
 module.exports=router
