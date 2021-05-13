@@ -1,12 +1,28 @@
 const express=require('express')
 const app=express()
 const port=5000
+
 const expressSession=require('express-session')
-const passport=require('./config/passport_set_up')
+
+const Handlebars = require('handlebars')
+const exphbs = require('express-handlebars');
+const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
+
+const passport=require('passport')
+const passportLocal=require('./config/passport_set_up')
 const MongoStore = require('connect-mongo')//MongoDB to store user's session 
+
 const sassMiddleware = require('node-sass-middleware')//using sass middleware
 
-require('./config/hbs_config').hbsConfig(app)//handlebars configuration
+//handlebars configuration
+app.engine('hbs', exphbs({
+    defaultLayout: 'main',
+    handlebars: allowInsecurePrototypeAccess(Handlebars),
+    extname: '.hbs'
+}));
+
+app.set('view engine', 'hbs');
+
 require('./config/db_conn')// db connection
 
 //body parser

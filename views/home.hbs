@@ -3,3 +3,15 @@
     <textarea name="content" id="" cols="30" rows="10" placeholder="Type here..."></textarea>
     <button type="submit">Post</button>
 </form>
+<ul>
+    {{#each posts}}
+    
+        <li>
+            <p>
+                <span>{{this.content}}</span><br>
+                <small>{{this.user.name}}</small>
+            </p>
+        </li>
+   
+{{/each}}
+</ul>

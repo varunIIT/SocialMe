@@ -32,3 +32,6 @@ body {
     text-align: center;
     background-color: lightgrey;
     color: grey; }
+
+#content {
+  padding: 5px; }
