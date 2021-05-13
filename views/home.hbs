@@ -13,6 +13,11 @@
                 <span>{{this.content}}</span><br>
                 <small>{{this.user.name}}</small>
             </p>
+            <form action="/comment/create" method="POST">
+                <input type="text" name="content" id="" placeholder="comment here...">
+                <input type="hidden" name="postId" id="" value="{{this._id}}">
+                <button type="submit">Comment</button>
+            </form>
         </li>
    
 {{/each}}
