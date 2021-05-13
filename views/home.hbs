@@ -1,8 +1,10 @@
 <h1>Home</h1>
+{{#if name}}
 <form action="/post/create" method="POST">
     <textarea name="content" id="" cols="30" rows="10" placeholder="Type here..."></textarea>
     <button type="submit">Post</button>
 </form>
+{{/if}}
 <ul>
     {{#each posts}}
     
