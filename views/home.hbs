@@ -1,7 +1,7 @@
 <h1>Home</h1>
 {{#if name}}
 <form action="/post/create" method="POST">
-    <textarea name="content" id="" cols="30" rows="10" placeholder="Type here..."></textarea>
+    <textarea name="content" id="" cols="30" rows="10" placeholder="Type here..." required></textarea>
     <button type="submit">Post</button>
 </form>
 {{/if}}
@@ -14,10 +14,16 @@
                 <small>{{this.user.name}}</small>
             </p>
             <form action="/comment/create" method="POST">
-                <input type="text" name="content" id="" placeholder="comment here...">
+                <input type="text" name="content" id="" placeholder="comment here..." required>
                 <input type="hidden" name="postId" id="" value="{{this._id}}">
                 <button type="submit">Comment</button>
             </form>
+            {{#each this.comments}}
+                <p>
+                    <span>{{this.content}}</span><br>
+                    <small>{{this.user.name}}</small>
+                </p>
+            {{/each}}
         </li>
    
 {{/each}}

@@ -1,7 +1,15 @@
 const Post=require('../models/post')
 module.exports.home=async(req,res)=>{
     try{
-        const posts=await Post.find({}).populate('user')//find all posts and populating user of every post
+        //find all posts and populating user of every post
+        const posts=await Post.find({})
+        .populate('user')
+        .populate({
+            path:'comments',
+            populate:{
+                path:'user'
+            }
+        })
         res.render('home',{title:'Home',posts:posts})
 
     }
