@@ -15,13 +15,19 @@ const MongoStore = require('connect-mongo')//MongoDB to store user's session
 const sassMiddleware = require('node-sass-middleware')//using sass middleware
 
 //handlebars configuration
-app.engine('hbs', exphbs({
+const hbs=exphbs.create({
     defaultLayout: 'main',
     handlebars: allowInsecurePrototypeAccess(Handlebars),
-    extname: '.hbs'
-}));
-
+    extname: '.hbs',
+    // helper function for '==' operator
+    helpers:{
+        eq:(v1,v2)=>String(v1)==String(v2)
+    }
+})
+app.engine('hbs',hbs.engine );
 app.set('view engine', 'hbs');
+
+
 
 require('./config/db_conn')// db connection
 
