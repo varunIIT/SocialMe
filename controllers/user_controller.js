@@ -12,8 +12,9 @@ module.exports.signIn=(req,res)=>{
     }
     res.render('home_sign_in',{title:'sign-in'})
 }
-module.exports.profile=(req,res)=>{
-    res.render('profile',{title:'Profile'})// render profile page
+module.exports.profile=async (req,res)=>{
+    const profile_user=await User.findById(req.params.id)
+    res.render('profile',{title:'Profile',profile_user})// render profile page
 }
 module.exports.createUser=async (req,res)=>{
     if(req.body.password!=req.body.confirmPassword){// if password and confirm password are not equal redirect back to sign-up page
@@ -38,5 +39,9 @@ module.exports.createSession=(req,res)=>{
 }
 module.exports.signOut=(req,res)=>{
     req.logout()
+    res.redirect('/')
+}
+module.exports.update=async (req,res)=>{
+    await User.findByIdAndUpdate(req.user.id,req.body)
     res.redirect('/')
 }

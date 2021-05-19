@@ -1,2 +1,14 @@
-<h1>SocialMe</h1>
-<b>{{name}}</b>
+<h1>Profile</h1>
+{{#if (eq user._id profile_user._id)}}
+    <form action="/user/update" method="post">
+        <input type="text" name="name" id="" value="{{profile_user.name}}" required>
+        <input type="text" name="email" id=""value="{{profile_user.email}}" required>
+        <button type="submit">update</button>
+    </form>
+{{else}}
+<ul>
+    <li>{{profile_user.name}}</li>
+    <li>{{profile_user.email}}</li>
+</ul>
+
+{{/if}}

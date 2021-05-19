@@ -1,4 +1,5 @@
 const Post=require('../models/post')
+const User = require('../models/user')
 module.exports.home=async(req,res)=>{
     try{
         //find all posts and populating user of every post
@@ -10,7 +11,8 @@ module.exports.home=async(req,res)=>{
                 path:'user'
             }
         })
-        res.render('home',{title:'Home',posts:posts})
+        const users=await User.find({})
+        res.render('home',{title:'Home',posts:posts,profile_users:users})
 
     }
     catch(err){

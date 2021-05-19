@@ -12,3 +12,10 @@
         {{/each}}
     </ul>
 </div>
+
+<div id="friends-list">
+    <h1>Friends</h1>
+    {{#each profile_users}}
+        <a href="/user/profile/{{this._id}}">{{this.name}}</a><br>
+    {{/each}}
+</div>
