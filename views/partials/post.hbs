@@ -1,0 +1,22 @@
+<li>
+    <p>
+        <span>{{this.content}}</span><br>
+        <small>{{this.user.name}}</small>
+        {{!-- custom if comparison --}}
+        {{#if (eq @root.user._id this.user._id)}}
+        <small><a href="/post/delete/{{this._id}}">Delete</a></small>
+        {{/if}}
+    </p>
+    <form action="/comment/create" method="POST">
+        <input type="text" name="content" id="" placeholder="comment here..." required>
+        <input type="hidden" name="postId" id="" value="{{this._id}}">
+        <button type="submit">Comment</button>
+    </form>
+    <div id="comments-list">
+        <ul>
+            {{#each this.comments}}
+                {{>comment}}
+            {{/each}}
+        </ul>
+    </div>
+</li>

@@ -1,0 +1,9 @@
+<li>
+    <p>
+        <span>{{this.content}}</span><br>
+        <small>{{this.user.name}}</small>
+        {{#if (eq @root.user._id this.user._id)}}
+        <small><a href="/comment/delete/{{this._id}}">Delete</a></small>
+        {{/if}}
+    </p>
+</li>
