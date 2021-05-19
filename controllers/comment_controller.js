@@ -19,3 +19,23 @@ module.exports.create=async(req,res)=>{
         console.log(`Error: ${err}`)
     }
 }
+module.exports.delete=async(req,res)=>{
+    try{
+        const commentId=req.params.id
+        const comment=await Comment.findById(commentId)
+        const userId=comment.user
+
+        if(String(userId)==req.user.id){
+            const postId=comment.post
+            comment.remove()
+            await Post.findByIdAndUpdate(postId,{$pull:{comments:commentId}})
+            res.redirect('back')
+        }
+        else{
+            res.redirect('back')
+        }
+    }
+    catch(err){
+        console.log(`Error: ${err}`)
+    }
+}

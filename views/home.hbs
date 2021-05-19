@@ -24,12 +24,19 @@
                 <button type="submit">Comment</button>
             </form>
             <div id="comments-list">
-                {{#each this.comments}}
-                    <p>
-                        <span>{{this.content}}</span><br>
-                        <small>{{this.user.name}}</small>
-                    </p>
-                {{/each}}
+                <ul>
+                    {{#each this.comments}}
+                    <li>
+                        <p>
+                            <span>{{this.content}}</span><br>
+                            <small>{{this.user.name}}</small>
+                            {{#if (eq @root.user._id this.user._id)}} 
+                                <small><a href="/comment/delete/{{this._id}}">Delete</a></small>
+                            {{/if}}
+                        </p>
+                    </li>
+                    {{/each}}
+                </ul>
             </div>
         </li>
    
