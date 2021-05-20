@@ -35,10 +35,12 @@ module.exports.createUser=async (req,res)=>{
     }
 }
 module.exports.createSession=(req,res)=>{
+    req.flash('success','Logged in successfully')
     res.redirect('/')
 }
 module.exports.signOut=(req,res)=>{
     req.logout()
+    req.flash('success','Logged out successfully')
     res.redirect('/')
 }
 module.exports.update=async (req,res)=>{

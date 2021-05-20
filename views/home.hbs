@@ -1,4 +1,7 @@
 <link rel="stylesheet" href="/css/home.css">
+{{#if flash.success}}
+    <h2>{{flash.success}}</h2> 
+{{/if}}
 <div id="home-container">
     <div id="feed">
         {{#if user}}

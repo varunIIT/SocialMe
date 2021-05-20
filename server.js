@@ -13,6 +13,8 @@ const passportLocal=require('./config/passport_set_up')
 const MongoStore = require('connect-mongo')//MongoDB to store user's session 
 
 const sassMiddleware = require('node-sass-middleware')//using sass middleware
+const flash=require('connect-flash')//for storing flash messages in session cookie
+const middleware=require('./config/middleware')//requiring flash middlewares
 
 //handlebars configuration
 const hbs=exphbs.create({
@@ -54,6 +56,8 @@ app.use(passport.initialize())
 app.use(passport.session())
 app.use(passport.setAuthenticatedUser)
 
+app.use(flash())// using this middleware just after initialising express session
+app.use(middleware.flashMiddleware)
 //sass middleware
 app.use(sassMiddleware({
     /* Options */
