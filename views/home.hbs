@@ -1,21 +1,29 @@
-<h1>Home</h1>
-{{#if user}}
-<form action="/post/create" method="POST">
-    <textarea name="content" id="" cols="30" rows="10" placeholder="Type here..." required></textarea>
-    <button type="submit">Post</button>
-</form>
-{{/if}}
-<div id="posts-list">
-    <ul>
-        {{#each posts}}
-            {{>post}}
-        {{/each}}
-    </ul>
-</div>
+<link rel="stylesheet" href="/css/home.css">
+<div id="home-container">
+    <div id="feed">
+        {{#if user}}
+        <h2>Write Post</h2>
+        <form action="/post/create" method="POST">
+            <textarea name="content" id="" cols="30" rows="10" placeholder="Type here..." required></textarea>
+            <button type="submit">Post</button>
+        </form>
+        {{/if}}
+        <h2>Recent Posts</h2>
+        <div id="posts-list">
+            <ul>
+                {{#each posts}}
+                {{>post}}
+                {{/each}}
+            </ul>
+        </div>
+    </div>
 
-<div id="friends-list">
-    <h1>Friends</h1>
-    {{#each profile_users}}
-        <a href="/user/profile/{{this._id}}">{{this.name}}</a><br>
-    {{/each}}
+    <div id="friends-list">
+        <h2>Friends</h2>
+        <ul>
+            {{#each profile_users}}
+            <li><a href="/user/profile/{{this._id}}">{{this.name}}</a></li>
+            {{/each}}
+        </ul>
+    </div>
 </div>

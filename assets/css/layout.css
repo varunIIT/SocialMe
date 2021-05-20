@@ -3,8 +3,7 @@ body {
   margin: 0px; }
 
 #header header {
-  background-color: blue;
-  margin-bottom: 2px; }
+  background-color: blue; }
   #header header .container {
     display: flex;
     justify-content: space-between;
@@ -19,13 +18,8 @@ body {
         margin: 5px;
         color: white; }
 
-#footer footer {
-  margin-top: 4px; }
-  #footer footer .container {
-    padding: 8px;
-    text-align: center;
-    background-color: lightgrey;
-    color: grey; }
-
-#content {
-  padding: 5px; }
+#footer footer .container {
+  padding: 8px;
+  text-align: center;
+  background-color: lightgrey;
+  color: grey; }

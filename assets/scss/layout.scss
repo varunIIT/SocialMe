@@ -5,7 +5,6 @@ body{
 #header{
     header{
         background-color: blue;
-        margin-bottom: 2px;
         .container{
             display: flex;
             justify-content: space-between;
@@ -27,7 +26,6 @@ body{
 }
 #footer{
     footer{
-        margin-top: 4px;
         .container{
             padding: 8px;
             text-align: center;
@@ -35,7 +33,4 @@ body{
             color:grey;
         }
     }
-}
-#content{
-    padding: 5px;
 }
