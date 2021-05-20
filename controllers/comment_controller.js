@@ -12,7 +12,7 @@ module.exports.create=async(req,res)=>{
         const post=await Post.findById(req.body.postId)//find which post the comment is being done
         post.comments.push(comment._id)//pushing comment id to array of comment which will be present in comment schema
         post.save()//we should save it after every updatation
-
+        req.flash('success',' comment published successfully!')
         res.redirect('back')
     }
     catch(err){
@@ -29,9 +29,11 @@ module.exports.delete=async(req,res)=>{
             const postId=comment.post
             comment.remove()
             await Post.findByIdAndUpdate(postId,{$pull:{comments:commentId}})
+            req.flash('success',' comment deleted successfully!')
             res.redirect('back')
         }
         else{
+            req.flash('error','unauthorised!')
             res.redirect('back')
         }
     }

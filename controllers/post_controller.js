@@ -7,6 +7,7 @@ module.exports.create=async (req,res)=>{
             content:req.body.content,
             user:req.user._id
         })
+        req.flash('success','post published successfully!')
         res.redirect('back')
     }
     catch(err){
@@ -20,9 +21,11 @@ module.exports.delete=async (req,res)=>{
         if(String(post.user)==String(req.user._id)){
             await Post.findByIdAndDelete(req.params.id)//deleting the post with id passed as params
             await Comment.deleteMany({post:req.params.id})//deleting all the comments associated to this post
+            req.flash('success','post/associated comments deleted successfully!')
             res.redirect('back')
         }
         else{
+            req.flash('error','unauthorised!')
             res.redirect('back')
         }
     }

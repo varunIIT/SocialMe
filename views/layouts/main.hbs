@@ -41,6 +41,17 @@
         }).show();
     </script>
     {{/if}}
+    {{#if flash.error}}
+    <script>
+        new Noty({
+            theme: 'relax',
+            type: 'error',
+            layout: 'topRight',
+            text: '{{flash.error}}',
+            timeout: 1500
+        }).show();
+    </script>
+    {{/if}}
 </body>
 
 

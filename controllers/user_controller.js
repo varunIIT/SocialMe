@@ -18,6 +18,7 @@ module.exports.profile=async (req,res)=>{
 }
 module.exports.createUser=async (req,res)=>{
     if(req.body.password!=req.body.confirmPassword){// if password and confirm password are not equal redirect back to sign-up page
+        req.flash('error','password and confirm password do not match!')
         res.redirect('back') 
         return
     }
@@ -25,9 +26,11 @@ module.exports.createUser=async (req,res)=>{
         const user=await User.findOne({email:req.body.email})
         if(!user){//if user is not found this implies there is new user and register him successfully and redirect to sign-up page
             await User.create(req.body)
+            res.flash('success','signed up successfully!')
             res.redirect('/user/sign-in')
             return
         }
+        req.flash('error','email already exists!')
         res.redirect('back')// if user email is already exists redirect back to sign-up page
     }
     catch(err){
@@ -35,12 +38,12 @@ module.exports.createUser=async (req,res)=>{
     }
 }
 module.exports.createSession=(req,res)=>{
-    req.flash('success','Logged in successfully')
+    req.flash('success','signed in successfully!')
     res.redirect('/')
 }
 module.exports.signOut=(req,res)=>{
     req.logout()
-    req.flash('success','Logged out successfully')
+    req.flash('success','signed out successfully!')
     res.redirect('/')
 }
 module.exports.update=async (req,res)=>{
