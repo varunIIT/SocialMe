@@ -1,10 +1,10 @@
-<li>
+<li id="post-{{this.id}}">
     <p>
         <span>{{this.content}}</span><br>
         <small>{{this.user.name}}</small>
         {{!-- custom if comparison --}}
         {{#if (eq @root.user._id this.user._id)}}
-        <small><a href="/post/delete/{{this._id}}">Delete</a></small>
+        <small class="delete-post-button"><a href="/post/delete/{{this._id}}">Delete</a></small>
         {{/if}}
     </p>
     <form action="/comment/create" method="POST">
@@ -12,7 +12,7 @@
         <input type="hidden" name="postId" id="" value="{{this._id}}">
         <button type="submit">Comment</button>
     </form>
-    <div id="comments-list">
+    <div id="comments-list-{{this.id}}">
         <ul>
             {{#each this.comments}}
                 {{>comment}}

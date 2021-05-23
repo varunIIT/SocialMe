@@ -7,6 +7,12 @@ module.exports.create=async (req,res)=>{
             content:req.body.content,
             user:req.user._id
         })
+        if(req.xhr){
+           return res.status(201).json({
+                data:{post},
+                message:"post created!"
+            })
+        }
         req.flash('success','post published successfully!')
         res.redirect('back')
     }

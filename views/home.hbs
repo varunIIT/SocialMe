@@ -3,7 +3,7 @@
     <div id="feed">
         {{#if user}}
         <h2>Write Post</h2>
-        <form action="/post/create" method="POST">
+        <form id="new-post-form" action="/post/create" method="POST">
             <textarea name="content" id="" cols="30" rows="10" placeholder="Type here..." required></textarea>
             <button type="submit">Post</button>
         </form>
@@ -27,3 +27,4 @@
         </ul>
     </div>
 </div>
+<script src="/js/post.js"></script>
