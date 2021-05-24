@@ -12,6 +12,12 @@ module.exports.create=async(req,res)=>{
         const post=await Post.findById(req.body.postId)//find which post the comment is being done
         post.comments.push(comment._id)//pushing comment id to array of comment which will be present in comment schema
         post.save()//we should save it after every updatation
+        if(req.xhr){
+            return res.status(201).json({
+                data:{comment},
+                message:'comment published!'
+            })
+        }
         req.flash('success',' comment published successfully!')
         res.redirect('back')
     }
@@ -29,6 +35,12 @@ module.exports.delete=async(req,res)=>{
             const postId=comment.post
             comment.remove()
             await Post.findByIdAndUpdate(postId,{$pull:{comments:commentId}})
+            if(req.xhr){
+                return res.status(200).json({
+                    data:{comment_id:comment._id},
+                    message:'comment deleted!'
+                })
+            }
             req.flash('success',' comment deleted successfully!')
             res.redirect('back')
         }

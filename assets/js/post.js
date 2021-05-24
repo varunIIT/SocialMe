@@ -10,8 +10,10 @@ newPostForm.on('submit',(e)=>{
             //console.log(data)
             const newPost=newPostDom(data.data.post)
             $('#posts-list>ul').prepend(newPost)
-            deletePost()//calling deletePost to get event listener of delete work for newly created post also
+            //calling deletePost to get event listener of delete work for newly created post also
+            deletePost($(`#post-${data.data.post._id} .delete-post-button`))
         },
+
         error:(err)=>{
             console.log(`Error: ${err.responseText}`)
         }
@@ -25,7 +27,7 @@ let newPostDom=(post)=>{
         <small>${post.user.name}</small>
         <small><a class="delete-post-button" href="/post/delete/${post._id}">Delete</a></small>
     </p>
-    <form action="/comment/create" method="POST">
+    <form class="new-comment-form" action="/comment/create" method="POST">
         <input type="text" name="content" id="" placeholder="comment here..." required>
         <input type="hidden" name="postId" id="" value="${post._id}$">
         <button type="submit">Comment</button>
@@ -37,8 +39,7 @@ let newPostDom=(post)=>{
 </li>`)
 }
 //method to delete post from dom
-let deletePost=()=>{
-    let deleteLink=$('.delete-post-button')
+let deletePost=(deleteLink)=>{
     deleteLink.on('click',function(e){// not using arrow function because 'this' will refer to global instead of selector
         e.preventDefault()
         $.ajax({
@@ -53,4 +54,5 @@ let deletePost=()=>{
         })
     })
 }
-deletePost()
+deletePost($('.delete-post-button'))
+

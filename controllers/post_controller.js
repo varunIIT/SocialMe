@@ -1,5 +1,4 @@
 const Comment = require('../models/comment')
-const { rawListeners } = require('../models/post')
 const Post = require('../models/post')
 
 module.exports.create=async (req,res)=>{

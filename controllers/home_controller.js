@@ -10,8 +10,11 @@ module.exports.home=async(req,res)=>{
             path:'comments',
             populate:{
                 path:'user'
-            }
+            },
+            options: { sort: { createdAt: -1 } } 
         })
+        
+        
         const users=await User.find({})
         res.render('home',{title:'Home',posts:posts,profile_users:users})
 
