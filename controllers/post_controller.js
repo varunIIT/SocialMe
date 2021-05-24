@@ -8,8 +8,9 @@ module.exports.create=async (req,res)=>{
             user:req.user._id
         })
         if(req.xhr){
-           return res.status(201).json({
-                data:{post},
+            const populatedPost= await Post.findById(post._id).populate('user')
+            return res.status(201).json({
+                data:{post:populatedPost},
                 message:"post created!"
             })
         }

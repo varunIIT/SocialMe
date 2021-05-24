@@ -12,6 +12,7 @@ newPostForm.on('submit',(e)=>{
             $('#posts-list>ul').prepend(newPost)
             //calling deletePost to get event listener of delete work for newly created post also
             deletePost($(`#post-${data.data.post._id} .delete-post-button`))
+            createCommentAJAX($(`#post-${data.data.post._id} .new-comment-form`))
         },
 
         error:(err)=>{
@@ -29,10 +30,10 @@ let newPostDom=(post)=>{
     </p>
     <form class="new-comment-form" action="/comment/create" method="POST">
         <input type="text" name="content" id="" placeholder="comment here..." required>
-        <input type="hidden" name="postId" id="" value="${post._id}$">
+        <input type="hidden" name="postId" id="" value="${post._id}">
         <button type="submit">Comment</button>
     </form>
-    <div id="comments-list-${post.id}">
+    <div id="comments-list-${post._id}">
         <ul>
         </ul>
     </div>
@@ -55,4 +56,3 @@ let deletePost=(deleteLink)=>{
     })
 }
 deletePost($('.delete-post-button'))
-

@@ -13,8 +13,10 @@ module.exports.create=async(req,res)=>{
         post.comments.push(comment._id)//pushing comment id to array of comment which will be present in comment schema
         post.save()//we should save it after every updatation
         if(req.xhr){
+            const populatedComment=await Comment.findById(comment._id).populate('user')
+            //console.log(populatedComment)
             return res.status(201).json({
-                data:{comment},
+                data:{comment:populatedComment},
                 message:'comment published!'
             })
         }
