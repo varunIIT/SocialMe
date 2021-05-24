@@ -17,10 +17,10 @@ module.exports.create=async(req,res)=>{
             //console.log(populatedComment)
             return res.status(201).json({
                 data:{comment:populatedComment},
-                message:'comment published!'
+                message:'Comment Published Successfully!'
             })
         }
-        req.flash('success',' comment published successfully!')
+        req.flash('success','Comment Published Successfully!')
         res.redirect('back')
     }
     catch(err){
@@ -40,10 +40,10 @@ module.exports.delete=async(req,res)=>{
             if(req.xhr){
                 return res.status(200).json({
                     data:{comment_id:comment._id},
-                    message:'comment deleted!'
+                    message:'Comment Deleted Successfully!'
                 })
             }
-            req.flash('success',' comment deleted successfully!')
+            req.flash('success','Comment Deleted Successfully!')
             res.redirect('back')
         }
         else{

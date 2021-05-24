@@ -11,10 +11,10 @@ module.exports.create=async (req,res)=>{
             const populatedPost= await Post.findById(post._id).populate('user')
             return res.status(201).json({
                 data:{post:populatedPost},
-                message:"post created!"
+                message:'Post Published Successfully!'
             })
         }
-        req.flash('success','post published successfully!')
+        req.flash('success','Post Published Successfully!')
         res.redirect('back')
     }
     catch(err){
@@ -31,10 +31,10 @@ module.exports.delete=async (req,res)=>{
             if(req.xhr){
                 return res.status(200).json({
                     data:{post_id:req.params.id},
-                    message:'Post deleted!'
+                    message:'Post/Associated Comments Deleted Successfully!'
                 })
             }
-            req.flash('success','post/associated comments deleted successfully!')
+            req.flash('success','Post/Associated Comments Deleted Successfully!')
             res.redirect('back')
         }
         else{

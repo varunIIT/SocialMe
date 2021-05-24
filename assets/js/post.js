@@ -10,6 +10,7 @@ newPostForm.on('submit',(e)=>{
             //console.log(data)
             const newPost=newPostDom(data.data.post)
             $('#posts-list>ul').prepend(newPost)
+            notify(data)
             //calling deletePost to get event listener of delete work for newly created post also
             deletePost($(`#post-${data.data.post._id} .delete-post-button`))
             createCommentAJAX($(`#post-${data.data.post._id} .new-comment-form`))
@@ -48,6 +49,7 @@ let deletePost=(deleteLink)=>{
             url: $(this).prop('href'),
             success:(data)=>{
                 $(`#post-${data.data.post_id}`).remove()
+                notify(data)
             },
             error:(err)=>{ 
                 console.log(`Error: ${err.responseText}`)

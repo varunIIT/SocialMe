@@ -1,5 +1,13 @@
 let newCommentForm=$('.new-comment-form')
-
+let notify=(data)=>{
+    new Noty({
+        theme: 'relax',
+        type: 'success',
+        layout: 'topRight',
+        text: data.message,
+        timeout: 1500
+    }).show()
+}
 //method to submit form data for new comment by AJAX
  let createCommentAJAX=(newCommentLink)=>{
     newCommentLink.on('submit',function(e){// not using arrow function because 'this' will refer to global instead of selector
@@ -11,6 +19,7 @@ let newCommentForm=$('.new-comment-form')
             success:(data)=>{
                 // console.log(data)
                 const newComment=createNewComment(data.data.comment)
+                notify(data)
                 $(`#comments-list-${data.data.comment.post}>ul`).prepend(newComment)
                 //calling deleteComment to get event listener of delete work for newly created comment also
                 deleteComment($(`#${data.data.comment._id} .delete-comment-button`))
@@ -44,6 +53,7 @@ let deleteComment=(deleteCommentButton)=>{
             url:$(this).prop('href'),
             success:(data)=>{
                 $(`#${data.data.comment_id}`).remove()
+                notify(data)
             },
             error:(err)=>{ 
                 console.log(`Error: ${err.responseText}`)
