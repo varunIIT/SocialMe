@@ -4,7 +4,7 @@
         <small>{{this.user.name}}</small>
         {{!-- custom if comparison --}}
         {{#if (eq @root.user._id this.user._id)}}
-        <small class="delete-post-button"><a href="/post/delete/{{this._id}}">Delete</a></small>
+        <small ><a class="delete-post-button" href="/post/delete/{{this._id}}">Delete</a></small>
         {{/if}}
     </p>
     <form action="/comment/create" method="POST">

@@ -1,4 +1,5 @@
 const Comment = require('../models/comment')
+const { rawListeners } = require('../models/post')
 const Post = require('../models/post')
 
 module.exports.create=async (req,res)=>{
@@ -27,6 +28,12 @@ module.exports.delete=async (req,res)=>{
         if(String(post.user)==String(req.user._id)){
             await Post.findByIdAndDelete(req.params.id)//deleting the post with id passed as params
             await Comment.deleteMany({post:req.params.id})//deleting all the comments associated to this post
+            if(req.xhr){
+                return res.status(200).json({
+                    data:{post_id:req.params.id},
+                    message:'Post deleted!'
+                })
+            }
             req.flash('success','post/associated comments deleted successfully!')
             res.redirect('back')
         }
