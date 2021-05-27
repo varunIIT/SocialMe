@@ -47,6 +47,35 @@ module.exports.signOut=(req,res)=>{
     res.redirect('/')
 }
 module.exports.update=async (req,res)=>{
-    await User.findByIdAndUpdate(req.user.id,req.body)
-    res.redirect('/')
+    try{
+        if(req.user.id==req.params.id){
+            const user=await User.findById(req.params.id)
+            //Now due to enctype="multipart/form-data" body-parser can'nt parse req.body so we are using static method 
+            //which we created while creating user model
+            User.uploadedAvatar(req,res,function(err){
+                if(err){
+                    return console.log('***Multer-Error*** ->',err)
+                }
+                console.log(req.file)
+                //now req.body id defined and we can use it as usual
+                user.name=req.body.name
+                user.email=req.body.email
+                if(req.file){//as file input is not required ,we should check if user has given file as input or not
+                    user.avatar=User.avatarPath+'/'+req.file.filename
+                }
+                user.save()
+                res.redirect('/')
+
+    
+            })
+        }
+        else{
+            req.flash('error','UNAUTHORIZED!')
+            return res.status(401).send('UNAUTHORIZED!')
+        }
+        
+    }
+    catch(err){
+        console.log(err)
+    }
 }

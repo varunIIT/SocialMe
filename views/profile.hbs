@@ -1,8 +1,9 @@
 <h1>Profile</h1>
 {{#if (eq user._id profile_user._id)}}
-    <form action="/user/update" method="post">
+    <form action="/user/update/{{user._id}}" method="post" enctype="multipart/form-data">
         <input type="text" name="name" id="" value="{{profile_user.name}}" required>
         <input type="text" name="email" id=""value="{{profile_user.email}}" required>
+        <input type="file" name="avatar" id="" placeholder="profile-picture">
         <button type="submit">update</button>
     </form>
 {{else}}
