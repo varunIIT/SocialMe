@@ -69,7 +69,8 @@ app.use(sassMiddleware({
 }));
 // Note: you must place sass-middleware *before* `express.static` or else it will
 // not work.
-app.use(express.static(__dirname+'/assets'))
+app.use(express.static(__dirname+'/assets'))//accessing assets directory as home route
+app.use('/uploads',express.static(__dirname+'/uploads'))//accessing uploads directory as /uploads start point
 
 app.use('/',require('./routes/index'))
 
