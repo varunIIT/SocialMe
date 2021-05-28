@@ -1,4 +1,6 @@
 const User=require('../models/user')
+const fs=require('fs')//file system module which will help in deleteing unwanted avatar files
+const path=require('path')
 
 module.exports.signUp=(req,res)=>{
     if(req.isAuthenticated()){//checking if user is already signed-in or not 
@@ -56,10 +58,16 @@ module.exports.update=async (req,res)=>{
                 if(err){
                     return console.log('***Multer-Error*** ->',err)
                 }
-                console.log(req.file)
+                //console.log(req.file)
                 //now req.body id defined and we can use it as usual
                 user.name=req.body.name
                 user.email=req.body.email
+                
+                
+                if(user.avatar){
+                    fs.unlinkSync(path.join(__dirname,'..',user.avatar))
+                    user.avatar=null
+                }
                 if(req.file){//as file input is not required ,we should check if user has given file as input or not
                     user.avatar=User.avatarPath+'/'+req.file.filename
                 }
