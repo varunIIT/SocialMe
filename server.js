@@ -9,7 +9,8 @@ const exphbs = require('express-handlebars');
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
 
 const passport=require('passport')
-const passportLocal=require('./config/passport_set_up')
+const passportLocal=require('./config/passport-local-strategy')
+const passportGoogle=require('./config/passport-google-strategy')
 const MongoStore = require('connect-mongo')//MongoDB to store user's session 
 
 const sassMiddleware = require('node-sass-middleware')//using sass middleware
