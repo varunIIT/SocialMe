@@ -15,6 +15,10 @@ const postSchema=new Schema({
     comments:[{
         type:Schema.Types.ObjectId,
         ref:'Comment'
+    }],
+    likes:[{
+        type:Schema.Types.ObjectId,
+        ref:'Like'
     }]
 },{
     timestamps:true//to keep track of when user was created or updated
