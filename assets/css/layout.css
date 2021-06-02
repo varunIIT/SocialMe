@@ -3,7 +3,10 @@ body {
   margin: 0px; }
 
 #header header {
-  background-color: blue; }
+  background-color: blue;
+  position: fixed;
+  top: 0px;
+  width: 100%; }
   #header header .container {
     display: flex;
     justify-content: space-between;
@@ -18,8 +21,16 @@ body {
         margin: 5px;
         color: white; }
 
-#footer footer .container {
-  padding: 8px;
-  text-align: center;
-  background-color: lightgrey;
-  color: grey; }
+#footer footer {
+  position: fixed;
+  bottom: 0px;
+  width: 100%; }
+  #footer footer .container {
+    padding: 8px;
+    text-align: center;
+    background-color: lightgrey;
+    color: grey; }
+
+#content {
+  margin-top: 40px;
+  margin-bottom: 60px; }

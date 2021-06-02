@@ -5,10 +5,14 @@ body{
 #header{
     header{
         background-color: blue;
+        position: fixed;
+        top: 0px;
+        width: 100%;
         .container{
             display: flex;
             justify-content: space-between;
             align-items: baseline;
+            
             div{
                 margin:0 4px;
                 h2{
@@ -26,11 +30,20 @@ body{
 }
 #footer{
     footer{
+        position: fixed;
+        bottom: 0px;
+        width: 100%;
         .container{
             padding: 8px;
             text-align: center;
             background-color :lightgrey;
             color:grey;
+            
+
         }
     }
+}
+#content{
+    margin-top: 40px;
+    margin-bottom: 60px;
 }
