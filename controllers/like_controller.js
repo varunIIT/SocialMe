@@ -25,7 +25,7 @@ module.exports.toggle=async (req,res)=>{
             likable.likes.pull(existingLike._id)
             likable.save()
             existingLike.remove()
-            existingLike.save()
+            
             liked=0//for unliked
         } 
         else{//alredy unliked now we should make it liked
