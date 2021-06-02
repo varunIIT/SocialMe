@@ -1,10 +1,23 @@
 <li id="post-{{this.id}}">
     <p>
         <span>{{this.content}}</span><br>
-        <small>{{this.user.name}}</small>
+        <small>{{this.user.name}}</small><br>
         {{!-- custom if comparison --}}
         {{#if (eq @root.user._id this.user._id)}}
-        <small ><a class="delete-post-button" href="/post/delete/{{this._id}}">Delete</a></small>
+            <small ><a class="delete-post-button" href="/post/delete/{{this._id}}">Delete</a></small>
+        {{/if}}
+
+        {{!--like part added --}}
+        {{#if @root.user}} 
+            <small>
+                <a class="sign-in-like" href="/like/toggle?id={{this.id}}&type=Post">Likes <span>{{this.likes.length}}</span></a>
+                
+            </small>
+        {{else}}
+            <small>
+                <span>likes <span>{{this.likes.length}}</span></span>
+                
+            </small>
         {{/if}}
     </p>
     <form class="new-comment-form" action="/comment/create" method="POST">

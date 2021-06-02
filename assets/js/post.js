@@ -11,9 +11,10 @@ newPostForm.on('submit',(e)=>{
             const newPost=newPostDom(data.data.post)
             $('#posts-list>ul').prepend(newPost)
             notify(data)
-            //calling deletePost to get event listener of delete work for newly created post also
+            //defining event listeners to links of newly created post also to function those features such as delete,comment,like
             deletePost($(`#post-${data.data.post._id} .delete-post-button`))
             createCommentAJAX($(`#post-${data.data.post._id} .new-comment-form`))
+            likeEventListener($(`#post-${data.data.post._id} .sign-in-like`))
         },
 
         error:(err)=>{
@@ -26,9 +27,13 @@ let newPostDom=(post)=>{
     return (`<li id="post-${post._id}">
     <p>
         <span>${post.content}</span><br>
-        <small>${post.user.name}</small>
+        <small>${post.user.name}</small><br>
         <small><a class="delete-post-button" href="/post/delete/${post._id}">Delete</a></small>
+        <small>
+            <a class="sign-in-like" href="/like/toggle?id=${post._id}&type=Post">Likes <span>${post.likes.length}</span></a>
+        </small>
     </p>
+    
     <form class="new-comment-form" action="/comment/create" method="POST">
         <input type="text" name="content" id="" placeholder="comment here..." required>
         <input type="hidden" name="postId" id="" value="${post._id}">

@@ -27,6 +27,17 @@
         </ul>
     </div>
 </div>
+<script>
+    let notify=(data)=>{
+    new Noty({
+        theme: 'relax',
+        type: 'success',
+        layout: 'topRight',
+        text: data.message,
+        timeout: 1500
+    }).show()
+}
+</script>
 <script src="/js/comment.js"></script>
 <script src="/js/post.js"></script>
-
+<script src="/js/like.js"></script>
