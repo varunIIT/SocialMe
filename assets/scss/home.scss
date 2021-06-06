@@ -1,13 +1,19 @@
+h2{
+    text-align: center;
+}
 #home-container {
     display: flex;
-    #feed{
-        width: 75%;
+    #write-post{
+        width: 30%;
         padding:0 10px;
-    } 
-    #friends-list{
-        width: 25%;
+    }
+    #posts-list{
+        width: 40%;
         padding:0 10px;
         border-left: 1px solid lightgrey;
+        height: 651px;
+        overflow-y: scroll;
     }
+    
   }
   

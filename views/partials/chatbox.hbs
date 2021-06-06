@@ -1,19 +1,18 @@
-{{#if user}}
-    <link rel="stylesheet" href="/css/chatbox.css">
-    <div id="chatbox">
-        <div id="chat-messages">
-                <div class="sender">
-                    <span>Your message!</span><br>
-                    <small>You</small>
-                </div>
-           
-                <div class="receiver">  
-                    <span>Other's message!</span><br>
-                    <small>xyz</small>
-                </div>
+<link rel="stylesheet" href="/css/chatbox.css">
+<div id="chatbox">
+    <div id="chat-messages">
+        <div class="sender">
+            <span>Your message!</span><br>
+            <small>You</small>
         </div>
-        <div id="chatbox-form">
-                <input type="text" id="chat-input" placeholder="type here to chat..."><button type="button" id="send-message" >Send</button>
+
+        <div class="receiver">
+            <span>Other's message!</span><br>
+            <small>xyz</small>
         </div>
     </div>
-{{/if}}
+    <div id="chatbox-form">
+        <input type="text" id="chat-input" {{#if user}} placeholder="Chat here..." {{else}}
+            placeholder="Login to Chat here..." {{/if}}><button type="button" id="send-message">Send</button>
+    </div>
+</div>
