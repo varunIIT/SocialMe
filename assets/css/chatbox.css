@@ -5,17 +5,19 @@
   position: fixed;
   margin-bottom: 60px;
   bottom: 0px;
-  right: 6px; }
+  right: 6px;
+  overflow-y: scroll; }
   #chatbox #chatbox-form {
-    position: absolute;
+    position: fixed;
+    margin-bottom: 60px;
     bottom: 0;
-    width: 100%; }
+    right: 24px; }
     #chatbox #chatbox-form input {
       height: 34px;
-      width: 70%; }
+      width: 178px; }
     #chatbox #chatbox-form button {
       height: 40px;
-      width: 27%; }
+      width: 77px; }
   #chatbox #chat-messages {
     padding: 5px; }
     #chatbox #chat-messages .sender {

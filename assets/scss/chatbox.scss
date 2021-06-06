@@ -6,17 +6,20 @@
     margin-bottom: 60px;
     bottom: 0px;
     right: 6px;
+    overflow-y: scroll;
     #chatbox-form{
-        position:absolute;
+        position:fixed;
+        margin-bottom: 60px;
         bottom: 0;
-        width: 100%;
+        right: 24px;
+    
         input{
             height: 34px;
-            width: 70%;
+            width: 178px;
         }
         button{
             height: 40px;
-            width: 27%;
+            width: 77px;
         }
         
     }
