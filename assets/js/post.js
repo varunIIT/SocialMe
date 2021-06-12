@@ -25,7 +25,7 @@ newPostForm.on('submit',(e)=>{
 //method to create post in DOM
 let newPostDom=(post)=>{
     return (`<li id="post-${post._id}">
-    <p>
+    <p class="post-paragraph mt-3">
         <span>${post.content}</span><br>
         <small>${post.user.name}</small><br>
         <small><a class="delete-post-button" href="/post/delete/${post._id}">Delete</a></small>
@@ -35,9 +35,11 @@ let newPostDom=(post)=>{
     </p>
     
     <form class="new-comment-form" action="/comment/create" method="POST">
-        <input type="text" name="content" id="" placeholder="comment here..." required>
-        <input type="hidden" name="postId" id="" value="${post._id}">
-        <button type="submit">Comment</button>
+        <div class="input-group mb-2">
+            <input type="text" class="form-control" placeholder="Comment here..." name="content" required>
+            <input type="hidden" name="postId" value="${post._id}">
+            <button class="btn btn-primary" type="submit" id="button-addon2">Comment</button>
+        </div>
     </form>
     <div id="comments-list-${post._id}">
         <ul>

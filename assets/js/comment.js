@@ -27,8 +27,8 @@ createCommentAJAX(newCommentForm)
 
 //method to create comment in DOM
 const createNewComment=(comment)=>{
-    return `<li id="${comment._id}">
-    <p>
+    return `<li id="${comment._id}" class="list-group-item p-0 ps-1 pe-1" style="width: 70%;">
+    <p class="comment-paragraph m-0">
         <span>${comment.content}</span><br>
         <small>${comment.user.name}</small><br>
         <small><a class="delete-comment-button" href="/comment/delete/${comment._id}">Delete</a></small>

@@ -1,34 +1,37 @@
 <li id="post-{{this.id}}">
-    <p>
+    <p class="post-paragraph mt-3">
         <span>{{this.content}}</span><br>
         <small>{{this.user.name}}</small><br>
         {{!-- custom if comparison --}}
         {{#if (eq @root.user._id this.user._id)}}
-            <small ><a class="delete-post-button" href="/post/delete/{{this._id}}">Delete</a></small>
+        <small><a class="delete-post-button" href="/post/delete/{{this._id}}">Delete</a></small>
         {{/if}}
 
         {{!--like part added --}}
-        {{#if @root.user}} 
-            <small>
-                <a class="sign-in-like" href="/like/toggle?id={{this.id}}&type=Post">Likes <span>{{this.likes.length}}</span></a>
-                
-            </small>
+        {{#if @root.user}}
+        <small>
+            <a class="sign-in-like" href="/like/toggle?id={{this.id}}&type=Post">Likes
+                <span>{{this.likes.length}}</span></a>
+
+        </small>
         {{else}}
-            <small>
-                <span>likes <span>{{this.likes.length}}</span></span>
-                
-            </small>
+        <small>
+            <span>likes <span>{{this.likes.length}}</span></span>
+
+        </small>
         {{/if}}
     </p>
     <form class="new-comment-form" action="/comment/create" method="POST">
-        <input type="text" name="content" id="" placeholder="comment here..." required>
-        <input type="hidden" name="postId" id="" value="{{this._id}}">
-        <button type="submit">Comment</button>
+        <div class="input-group mb-2">
+            <input type="text" class="form-control" placeholder="Comment here..." name="content" required>
+            <input type="hidden" name="postId" value="{{this._id}}">
+            <button class="btn btn-primary" type="submit" id="button-addon2">Comment</button>
+        </div>
     </form>
     <div id="comments-list-{{this.id}}">
-        <ul>
+        <ul class="list-group ps-4">
             {{#each this.comments}}
-                {{>comment}}
+            {{>comment}}
             {{/each}}
         </ul>
     </div>

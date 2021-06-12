@@ -5,10 +5,20 @@ h2 {
   display: flex; }
   #home-container #write-post {
     width: 30%;
-    padding: 0 10px; }
+    padding: 0 40px; }
   #home-container #posts-list {
     width: 40%;
-    padding: 0 10px;
+    padding: 0 40px;
     border-left: 1px solid lightgrey;
     height: 628px;
     overflow-y: scroll; }
+
+.post-paragraph {
+  border: solid 1px lightgrey;
+  border-radius: 5px;
+  padding: 8px;
+  margin: 0;
+  word-wrap: break-word; }
+
+.comment-paragraph {
+  word-wrap: break-word; }
