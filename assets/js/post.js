@@ -27,10 +27,10 @@ let newPostDom=(post)=>{
     return (`<li id="post-${post._id}">
     <p class="post-paragraph mt-3">
         <span>${post.content}</span><br>
-        <small>${post.user.name}</small><br>
-        <small><a class="delete-post-button" href="/post/delete/${post._id}">Delete</a></small>
+        <small><i>${post.user.name}</i></small><br>
+        <small><a class="delete-post-button me-2" href="/post/delete/${post._id}"><i class="fas fa-trash-alt"></i></a></small>
         <small>
-            <a class="sign-in-like" href="/like/toggle?id=${post._id}&type=Post">Likes <span>${post.likes.length}</span></a>
+            <a class="sign-in-like" href="/like/toggle?id=${post._id}&type=Post"><i class="fas fa-thumbs-up"></i> <span>${post.likes.length}</span></a>
         </small>
     </p>
     

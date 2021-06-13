@@ -1,21 +1,24 @@
 <li id={{this._id}} class="list-group-item p-0" style="width: 70%;">
     <p class="comment-paragraph">
         <span>{{this.content}}</span><br>
-        <small>{{this.user.name}}</small>
-        {{#if (eq @root.user._id this.user._id)}}
-        <small><a class="delete-comment-button" href="/comment/delete/{{this._id}}">Delete</a></small>
-        {{/if}}
-        {{!--like part added --}}
-        {{#if @root.user}} 
+        <small><i>{{this.user.name}}</i></small>
+        <span style="float: right;">
+            {{#if (eq @root.user._id this.user._id)}}
+            <small><a class="delete-comment-button me-2" href="/comment/delete/{{this._id}}"><i class="fas fa-trash-alt"></i></a></small>
+            {{/if}}
+            {{!--like part added --}}
+            {{#if @root.user}}
             <small>
-                <a class="sign-in-like" href="/like/toggle?id={{this.id}}&type=Comment">Likes <span>{{this.likes.length}}</span></a>
-                
+                <a class="sign-in-like" href="/like/toggle?id={{this.id}}&type=Comment"><i class="fas fa-thumbs-up"></i>
+                    <span>{{this.likes.length}}</span></a>
+
             </small>
-        {{else}}
+            {{else}}
             <small>
-                <span>likes <span>{{this.likes.length}}</span></span>
-                
+                <span style="color: blue;"><i class="fas fa-thumbs-up"></i> <span>{{this.likes.length}}</span></span>
+
             </small>
-        {{/if}}
+            {{/if}}
+        </span>
     </p>
 </li>

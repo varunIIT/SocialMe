@@ -1,22 +1,22 @@
 <li id="post-{{this.id}}">
     <p class="post-paragraph mt-3">
         <span>{{this.content}}</span><br>
-        <small>{{this.user.name}}</small><br>
+        <small><i>{{this.user.name}}</i></small><br>
         {{!-- custom if comparison --}}
         {{#if (eq @root.user._id this.user._id)}}
-        <small><a class="delete-post-button" href="/post/delete/{{this._id}}">Delete</a></small>
+        <small><a class="delete-post-button me-2" href="/post/delete/{{this._id}}"><i class="fas fa-trash-alt"></i></a></small>
         {{/if}}
 
         {{!--like part added --}}
         {{#if @root.user}}
         <small>
-            <a class="sign-in-like" href="/like/toggle?id={{this.id}}&type=Post">Likes
+            <a class="sign-in-like" href="/like/toggle?id={{this.id}}&type=Post"><i class="fas fa-thumbs-up"></i>
                 <span>{{this.likes.length}}</span></a>
 
         </small>
         {{else}}
         <small>
-            <span>likes <span>{{this.likes.length}}</span></span>
+            <span style="color: blue;"><i class="fas fa-thumbs-up"></i> <span>{{this.likes.length}}</span></span>
 
         </small>
         {{/if}}
