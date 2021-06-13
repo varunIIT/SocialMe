@@ -36,13 +36,13 @@ let newPostDom=(post)=>{
     
     <form class="new-comment-form" action="/comment/create" method="POST">
         <div class="input-group mb-2">
-            <input type="text" class="form-control" placeholder="Comment here..." name="content" required>
+            <input type="text" class="form-control" placeholder="Comment here..." name="content" required style="background-color:lightyellow;">
             <input type="hidden" name="postId" value="${post._id}">
             <button class="btn btn-primary" type="submit" id="button-addon2">Comment</button>
         </div>
     </form>
     <div id="comments-list-${post._id}">
-        <ul>
+        <ul class="list-group ps-4">
         </ul>
     </div>
 </li>`)

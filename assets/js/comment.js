@@ -27,10 +27,10 @@ createCommentAJAX(newCommentForm)
 
 //method to create comment in DOM
 const createNewComment=(comment)=>{
-    return `<li id="${comment._id}" class="list-group-item p-0 ps-1 pe-1" style="width: 70%;">
-    <p class="comment-paragraph m-0">
+    return `<li id="${comment._id}" class="list-group-item p-0" style="width: 70%;">
+    <p class="comment-paragraph">
         <span>${comment.content}</span><br>
-        <small>${comment.user.name}</small><br>
+        <small>${comment.user.name}</small>
         <small><a class="delete-comment-button" href="/comment/delete/${comment._id}">Delete</a></small>
         <small><a class="sign-in-like" href="/like/toggle?id=${comment._id}&type=Comment">Likes <span>${comment.likes.length}</span></a></small>
     </p>
