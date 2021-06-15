@@ -4,7 +4,7 @@
         #users-list{
             width: 30%;
             margin:0 6px;
-            height: 250px;
+            height: 240px;
             overflow-y: scroll;
         }
     {{else}}
@@ -21,7 +21,7 @@
         <div id="write-post">
          <h2 class="mb-3">Write Post</h2>
             <form id="new-post-form" action="/post/create" method="POST">
-                <textarea name="content" class="form-control" aria-label="With textarea" rows="16" placeholder="Start writing your post here..." required style="border: solid 1px grey;background-color:lightcyan "></textarea>
+                <textarea name="content" class="form-control" aria-label="With textarea" rows="16" placeholder="Start writing your post here..." required style="border:solid 1px black; background-color:lightcyan; "></textarea>
                 <div class="text-center"><button type="submit" class="btn btn-primary btn-lg mt-4" >Post</button></div>
             </form> 
         </div>
@@ -36,12 +36,12 @@
         </div>
 
     <div id="users-list">
-        <h2>All Users</h2>
-        <ul>
+        <h2 class="mb-3">All Users</h2>
+        <ol class="list-group list-group-numbered px-4" >
             {{#each profile_users}}
-            <li><a href="/user/profile/{{this._id}}">{{this.name}}</a></li>
+                <li class="list-group-item" style="background-color: lightcyan"><a href="/user/profile/{{this._id}}">{{this.name}}</a></li>
             {{/each}}
-        </ul>
+        </ol>
     </div>
 </div>
 {{>chatbox}}

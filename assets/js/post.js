@@ -27,7 +27,7 @@ let newPostDom=(post)=>{
     return (`<li id="post-${post._id}">
     <p class="post-paragraph mt-3">
         <span>${post.content}</span><br>
-        <small><i>${post.user.name}</i></small><br>
+        <small><i><a href="/user/profile/${post.user._id}">${post.user.name}</a></i></small><br>
         <small><a class="delete-post-button me-2" href="/post/delete/${post._id}"><i class="fas fa-trash-alt"></i></a></small>
         <small>
             <a class="sign-in-like" href="/like/toggle?id=${post._id}&type=Post"><i class="fas fa-thumbs-up"></i> <span>${post.likes.length}</span></a>

@@ -1,6 +1,6 @@
 #chatbox {
-  height: 350px;
-  width: 280px;
+  height: 360px;
+  width: 300px;
   border: dashed black 1px;
   position: fixed;
   margin-bottom: 66px;
@@ -9,27 +9,25 @@
   overflow-y: scroll; }
   #chatbox #chatbox-form {
     position: fixed;
-    margin-bottom: 66px;
+    margin-bottom: 68px;
     bottom: 0;
-    right: 24px; }
-    #chatbox #chatbox-form input {
-      height: 34px;
-      width: 178px; }
-    #chatbox #chatbox-form button {
-      height: 40px;
-      width: 77px; }
+    right: 24px;
+    width: 280px; }
   #chatbox #chat-messages {
-    padding: 5px; }
+    padding: 5px;
+    margin-bottom: 40px; }
     #chatbox #chat-messages .sender {
       padding: 5px;
-      margin: 8px;
-      background-color: #EFE1CE;
+      margin: 10px 6px;
+      background-color: lightcyan;
+      box-shadow: 2px 2px 5px;
       width: 55%;
       border-radius: 5px; }
     #chatbox #chat-messages .receiver {
       padding: 5px;
-      margin: 8px;
-      background-color: #F7CAC9;
+      margin: 10px 6px;
+      background-color: mistyrose;
+      box-shadow: 2px 2px 5px;
       width: 55%;
       margin-left: auto;
       border-radius: 5px; }

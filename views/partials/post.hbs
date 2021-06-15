@@ -1,7 +1,7 @@
 <li id="post-{{this.id}}">
     <p class="post-paragraph mt-3">
         <span>{{this.content}}</span><br>
-        <small><i>{{this.user.name}}</i></small><br>
+        <small><i><a href="/user/profile/{{this.user._id}}">{{this.user.name}}</a></i></small><br>
         {{!-- custom if comparison --}}
         {{#if (eq @root.user._id this.user._id)}}
         <small><a class="delete-post-button me-2" href="/post/delete/{{this._id}}"><i class="fas fa-trash-alt"></i></a></small>

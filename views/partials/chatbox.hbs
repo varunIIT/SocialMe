@@ -12,7 +12,11 @@
         </div>
     </div>
     <div id="chatbox-form">
-        <input type="text" id="chat-input" {{#if user}} placeholder="Chat here..." {{else}}
-            placeholder="Login to Chat here..." {{/if}}><button type="button" id="send-message">Send</button>
+        <div class="input-group">
+            <input type="text" id="chat-input" class="form-control" {{#if user}} placeholder="Chat here..." {{else}}
+                placeholder="Login to Chat here..." {{/if}} aria-describedby="send-message">
+            <button class="btn btn-outline-secondary" type="button" id="send-message">Send</button>
+        </div>
+
     </div>
 </div>

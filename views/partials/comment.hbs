@@ -1,7 +1,7 @@
 <li id={{this._id}} class="list-group-item p-0" style="width: 70%;">
     <p class="comment-paragraph">
         <span>{{this.content}}</span><br>
-        <small><i>{{this.user.name}}</i></small>
+        <small><i><a href="/user/profile/{{this.user._id}}">{{this.user.name}}</a></i></small>
         <span style="float: right;">
             {{#if (eq @root.user._id this.user._id)}}
             <small><a class="delete-comment-button me-2" href="/comment/delete/{{this._id}}"><i class="fas fa-trash-alt"></i></a></small>
