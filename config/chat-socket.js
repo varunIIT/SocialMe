@@ -1,13 +1,7 @@
 const socketIo=require('socket.io')
 module.exports.chatSocket=function (chatServer) {
-    let io=socketIo(chatServer,{
-        cors: {
-          origin: "http://localhost:5000",
-          methods: ["GET", "POST"],
-          allowedHeaders: ["my-custom-header"],
-          credentials: true
-        }
-      })
+    let io=socketIo(chatServer)
+    
     io.sockets.on('connection',function (socket) {
         console.log('new connection received',socket.id)
 

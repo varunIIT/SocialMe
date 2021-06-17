@@ -3,11 +3,9 @@ const app=express()
 const port=5000
 
 //chat server for chatting using web sockets
-const chatServer=require('http').Server(app)//we want two type of server i.e app and chat(io) so that is done using http.Server
-const chatSocket=require('./config/chat-socket').chatSocket(chatServer)//creating chat server finally
-chatServer.listen(5001,()=>{
-    console.log('chat server is active')
-})
+const server=require('http').Server(app)//we want two type of server i.e app and chat(io) so that is done using http.Server
+const chatSocket=require('./config/chat-socket').chatSocket(server)//creating chat server finally
+console.log('chat server is active')
 
 //passport set-ups
 const passport=require('passport')
@@ -79,7 +77,7 @@ app.use('/uploads',express.static(__dirname+'/uploads'))//accessing uploads dire
 
 app.use('/',require('./routes/index'))//entry of all route end points
 
-app.listen(port,(err)=>{
+server.listen(port,(err)=>{
     if(err){
         console.log(`Error : ${err}`)
     }

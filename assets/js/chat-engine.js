@@ -4,12 +4,7 @@ class chatEngine {
         this.userEmail = userEmail
         this.userName=userName
 
-        this.socket = io.connect('http://localhost:5001', {
-            withCredentials: true,
-            extraHeaders: {
-                "my-custom-header": "abcd"
-            }
-        })
+        this.socket = io.connect('http://localhost:5000')
         this.connectionHandler()
     }
     connectionHandler() {
@@ -53,7 +48,7 @@ class chatEngine {
                 $('#chat-messages').append(// appending the li item contianing message and sender in chatbox
                 `<div class="${classValue}">
                     <span>${data.message}</span><br>
-                    <small>${sender}</small>
+                    <small><b><i>${sender}</i></b></small>
                 </div>`)
             })  
 

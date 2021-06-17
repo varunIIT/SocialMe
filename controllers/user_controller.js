@@ -28,7 +28,7 @@ module.exports.createUser=async (req,res)=>{
         const user=await User.findOne({email:req.body.email})
         if(!user){//if user is not found this implies there is new user and register him successfully and redirect to sign-up page
             await User.create(req.body)
-            res.flash('success','signed up successfully!')
+            req.flash('success','signed up successfully!')
             res.redirect('/user/sign-in')
             return
         }
