@@ -1,6 +1,7 @@
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 const User=require('../models/user')
+const bcrypt=require('bcrypt')
 
 passport.use(new LocalStrategy({
     usernameField: 'email',//telling passport to use email as username
@@ -14,11 +15,14 @@ passport.use(new LocalStrategy({
                 req.flash('error','Invalid Email/Password!')
                 return done(null, false)
             }
-            if (user.password != password) {// if user with given email is found but password is incorect
-                req.flash('error','Invalid Email/Password!')
-                return done(null, false)
-            }
-            return done(null, user)// if email and password are correct
+            bcrypt.compare(password, user.password, function(err, isMatch) {
+                if (err) console.log(err);
+                if(!isMatch){// if user with given email is found but password is incorect
+                    req.flash('error','Invalid Email/Password!')
+                    return done(null, false)
+                }
+                return done(null, user)// if email and password are correct
+            });
         }
         catch (err) {
             console.log(`Error: ${err}`)
