@@ -13,6 +13,26 @@ const passportLocal=require('./config/passport-local-strategy')
 const passportGoogle=require('./config/passport-google-strategy')
 const MongoStore = require('connect-mongo')//MongoDB to store user's session 
 
+//express-session set up
+const expressSession=require('express-session')
+app.use(expressSession({
+    saveUninitialized:false,
+    resave:false,
+    secret:'some long string',
+    cookie:{
+        maxAge: 60*60*1000//cookie expires after 1 hour
+    },
+    //link between expressSession and MongoDB to store user's session in MongoDB
+    store:MongoStore.create({
+        mongoUrl: 'mongodb://localhost/SocialMe',
+        autoRemove:'native'//By this mongoDb automatically deletes expired sessions
+    })
+}))
+//passport middlewares
+app.use(passport.initialize())
+app.use(passport.session())
+app.use(passport.setAuthenticatedUser)
+
 //handlebars configuration
 const Handlebars = require('handlebars')
 const exphbs = require('express-handlebars');
@@ -34,26 +54,6 @@ require('./config/db_conn')// db connection
 //body parser
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
-
-//express-session set up
-const expressSession=require('express-session')
-app.use(expressSession({
-    saveUninitialized:false,
-    resave:false,
-    secret:'some long string',
-    cookie:{
-        maxAge: 60*60*1000//cookie expires after 1 hour
-    },
-    //link between expressSession and MongoDB to store user's session in MongoDB
-    store:MongoStore.create({
-        mongoUrl: 'mongodb://localhost/SocialMe',
-        autoRemove : 'disabled'
-    })
-}))
-//passport middlewares
-app.use(passport.initialize())
-app.use(passport.session())
-app.use(passport.setAuthenticatedUser)
 
 const flash=require('connect-flash')//for storing flash messages in session cookie
 const middleware=require('./config/middleware')//requiring flash middlewares
