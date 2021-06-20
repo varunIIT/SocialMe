@@ -12,7 +12,7 @@ const resetPasswordSchema=new Schema({
     },
     expiresIn:{
         type:Number,
-        default:new Date().getTime()+60*1000
+        required:true
     },
     token:{
         type:String

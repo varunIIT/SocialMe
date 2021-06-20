@@ -21,7 +21,7 @@ module.exports.sendOtp = async (req, res) => {
             if(data){
                 data.remove()//if user's previous otp session exists then deleting it 
             }
-            const resetPassword=await ResetPassword.create({email:req.body.email,otp})//creating new otp session
+            const resetPassword=await ResetPassword.create({email:req.body.email,otp,expiresIn:new Date().getTime()+60*1000})//creating new otp session
             mailer(req.body.email,otp)//seding email to user with otp by nodemailer
 
             return res.status(200).json({ status: 1, message: 'OTP has been sent to your email!' })
@@ -43,6 +43,7 @@ module.exports.verifyOtp=async (req,res)=>{
             return res.status(401)
         }
         if(resetPassword.expiresIn-new Date().getTime()<0){
+            //console.log(resetPassword.expiresIn-new Date().getTime())
             return res.status(401)
         }
         if(resetPassword.otp!=req.body.otp){
@@ -62,7 +63,23 @@ module.exports.verifyOtp=async (req,res)=>{
 module.exports.changePassword=async (req,res)=>{
     try{
         const token=req.cookies.token
-        
+        jwt.verify(token, 'secret', async (err,payload) => {
+            if(err){
+                return res.status(403)
+            }
+            if(!payload){
+                return res.status(401)
+            }
+            if(req.body.newPassword!=req.body.confirmPassword){
+                req.flash('error',"New Password and Confirm Password don't Match!")
+                return res.redirect('/user/sign-in')
+            }
+            const user=await User.findOne({email:payload.email})
+            user.password=req.body.newPassword
+            await user.save()
+            req.flash('success','Password Changed Successfully!')
+            res.redirect('/user/sign-in')
+          })
     }
     catch(err){
         console.log(err)
