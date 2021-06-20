@@ -1,6 +1,7 @@
 const User = require("../models/user")
 const ResetPassword=require('../models/reset-password')
 const mailer=require('../utils/otp-mailer')//mailer function to send email
+const jwt = require('jsonwebtoken');
 
 module.exports.frontend = (req, res) => {
     res.render('reset-password', { title: 'reset-password' })
@@ -23,13 +24,47 @@ module.exports.sendOtp = async (req, res) => {
             const resetPassword=await ResetPassword.create({email:req.body.email,otp})//creating new otp session
             mailer(req.body.email,otp)//seding email to user with otp by nodemailer
 
-            return res.status(200).json({ status: 1, message: 'Otp has been sent to your email!' })
+            return res.status(200).json({ status: 1, message: 'OTP has been sent to your email!' })
         }
         else {//if email is invalid
             return res.status(200).json({ status: 0, message: 'Invalid Email!' })
         }
     }
     catch (err) {
+        console.log(err)
+    }
+}
+
+module.exports.verifyOtp=async (req,res)=>{
+    try{
+        const resetPassword=await ResetPassword.findOne({email:req.body.email})
+        //all unsuccessful attempts
+        if(!resetPassword){
+            return res.status(401)
+        }
+        if(resetPassword.expiresIn-new Date().getTime()<0){
+            return res.status(401)
+        }
+        if(resetPassword.otp!=req.body.otp){
+            return res.status(200).json({status:0,message:'Incorrect OTP!'})
+        }
+        //if verification is successful
+        const token= jwt.sign({email:req.body.email,otp:req.body.otp},'secret', { expiresIn: '60s' })//creating jwt token for proper authentication
+        resetPassword.token=token
+        await resetPassword.save()
+        return res.status(200).json({status:1,message:'Change Password!',token})
+    }
+    catch(err){
+        console.log(err)
+    }
+}
+
+module.exports.changePassword=async (req,res)=>{
+    try{
+        const token=req.cookies.token
+        
+    }
+    catch(err){
         console.log(err)
     }
 }

@@ -13,6 +13,9 @@ const resetPasswordSchema=new Schema({
     expiresIn:{
         type:Number,
         default:new Date().getTime()+60*1000
+    },
+    token:{
+        type:String
     }
 })
 const ResetPassword=mongoose.model('ResetPassword',resetPasswordSchema)

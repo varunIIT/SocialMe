@@ -7,6 +7,9 @@ const server=require('http').Server(app)//we want two type of server i.e app and
 const chatSocket=require('./config/chat-socket').chatSocket(server)//creating chat server finally
 console.log('chat server is active')
 
+const cookieParser=require('cookie-parser')
+app.use(cookieParser())
+
 //passport set-ups
 const passport=require('passport')
 const passportLocal=require('./config/passport-local-strategy')

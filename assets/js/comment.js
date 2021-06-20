@@ -27,16 +27,17 @@ createCommentAJAX(newCommentForm)
 
 //method to create comment in DOM
 const createNewComment=(comment)=>{
-    return `<li id="${comment._id}" class="list-group-item p-0" style="width: 70%;">
-    <p class="comment-paragraph">
-        <span>${comment.content}</span><br>
-        <small><i><a href="/user/profile/${comment.user._id}">${comment.user.name}</a></i></small>
-        <span style="float: right;">
-            <small><a class="delete-comment-button me-2" href="/comment/delete/${comment._id}"><i class="fas fa-trash-alt"></i></a></small>
-            <small><a class="sign-in-like" href="/like/toggle?id=${comment._id}&type=Comment"><i class="fas fa-thumbs-up"></i> <span>${comment.likes.length}</span></a></small>
-        </span>
-    </p>
-</li>`
+    return `
+    <li id="${comment._id}" class="list-group-item p-0" style="width: 70%;">
+        <p class="comment-paragraph">
+            <span>${comment.content}</span><br>
+            <small><i><a href="/user/profile/${comment.user._id}">${comment.user.name}</a></i></small>
+            <span style="float: right;">
+                <small><a class="delete-comment-button me-2" href="/comment/delete/${comment._id}"><i class="fas fa-trash-alt"></i></a></small>
+                <small><a class="sign-in-like" href="/like/toggle?id=${comment._id}&type=Comment"><i class="fas fa-thumbs-up"></i> <span>${comment.likes.length}</span></a></small>
+            </span>
+        </p>
+    </li>`
 }
 
 
