@@ -1,10 +1,35 @@
-<h1>Sign Up</h1>
-
-<form action="/user/create" method="POST">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <input type="password" name="password" placeholder="password" required>
-    <input type="password" name="confirmPassword" placeholder="confirm password" required>
-    <input type="submit" value="Sign Up">
-</form>
-<a href="/user/auth/google">Google-SignIn/SignUp</a>
+<link rel="stylesheet" href="/css/sign-up.css">
+<div id="sign-up-container">
+    <div id="sign-up-form">
+        <h2 class="text-center"><i class="fas fa-sign-in-alt"></i> Sign Up</h2>
+        <form action="/user/create" method="POST">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="name" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="email" aria-describedby="emailHelp" name="password"
+                    required>
+            </div>
+             <div class="mb-3">
+                <label for="confrim-password" class="form-label">Confrim Password</label>
+                <input type="password" class="form-control" id="confrim-password" aria-describedby="emailHelp" name="confirmPassword"
+                    required>
+            </div>
+            <button id="otp-btn" class="btn btn-danger mt-3" style="width: 100%;" type="submit">Sign Up</button>
+        </form>
+        <div class="my-3 text-center">OR</div>
+            <div class="text-center">
+                <a class="btn btn-light" href="/user/auth/google" role="button" style="text-transform:none;border: solid 1px grey;">
+                    <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+                    Sign Up with Google
+                </a>
+            </div>
+    </div>
+</div>

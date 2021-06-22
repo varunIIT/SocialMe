@@ -42,9 +42,9 @@ module.exports.verifyOtp=async (req,res)=>{
         if(!resetPassword){
             return res.status(401)
         }
-        if(resetPassword.expiresIn-new Date().getTime()<0){
+        if(resetPassword.expiresIn-new Date().getTime()<0){//session(1 min) is expired
             //console.log(resetPassword.expiresIn-new Date().getTime())
-            return res.status(401)
+            return res.status(200).json({status:0,message:'Session Expired, Try Again!'})
         }
         if(resetPassword.otp!=req.body.otp){
             return res.status(200).json({status:0,message:'Incorrect OTP!'})
