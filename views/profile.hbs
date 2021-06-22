@@ -1,15 +1,36 @@
-<img src="{{profile_user.avatar}}" alt="{{profile_user.name}}" width="150px">
+<link rel="stylesheet" href="/css/profile.css">
 {{#if (eq user._id profile_user._id)}}
-    <form action="/user/update/{{user._id}}" method="post" enctype="multipart/form-data">
-        <input type="text" name="name" id="" value="{{profile_user.name}}" required>
-        <input type="text" name="email" id=""value="{{profile_user.email}}" required>
-        <input type="file" name="avatar" id="" placeholder="profile-picture">
-        <button type="submit">update</button>
+<div id="profile-container" style="height: 83vh;">
+    <div id="profile-form">
+        <h2 class="text-center"><img src="{{profile_user.avatar}}" alt="avatar" onerror=this.src="/profile/default-profile-image.png" width="150px"></h2>
+        <form action="/user/update/{{user._id}}" method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+            <label for="name" class="form-label"><b>Name</b></label>
+            <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="name" value="{{profile_user.name}}" required>
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label"><b>Email</b></label>
+        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" value="{{profile_user.email}}" required>
+    </div>
+    <div class="mb-3">
+        <label for="avatar" class="form-label"><b>Avatar</b></label>
+        <input type="file" class="form-control" aria-describedby="emailHelp"
+            name="avatar" id="avatar" placeholder="profile-picture">
+    </div>
+    <button  class="btn btn-danger mt-3" style="width: 100%;" type="submit">Update Profile!</button>
     </form>
+</div>
+</div>
 {{else}}
-<ul>
-    <li>{{profile_user.name}}</li>
-    <li>{{profile_user.email}}</li>
-</ul>
+ 
+<div id="profile-container" style="height: 70vh;">
+    <div id="other-user-profile">
+        <h2><img src="{{profile_user.avatar}}" alt="avatar" onerror=this.src="/profile/default-profile-image.png" width="150px"></h2>
+        <div>
+            <div><i><b>{{profile_user.name}}</b></i></div>
+            <div><i><b>{{profile_user.email}}</b></i></div>
+        </div>
+</div>
+</div>
 
 {{/if}}

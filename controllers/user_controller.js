@@ -72,6 +72,7 @@ module.exports.update=async (req,res)=>{
                     user.avatar=User.avatarPath+'/'+req.file.filename
                 }
                 user.save()
+                req.flash('success','Your Profile Updated Successfully!')
                 res.redirect('/')
 
     

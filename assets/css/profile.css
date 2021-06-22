@@ -1,0 +1,18 @@
+#profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  #profile-container #profile-form {
+    box-shadow: 2px 2px 10px black;
+    padding: 20px;
+    width: 28%; }
+  #profile-container #other-user-profile {
+    box-shadow: 2px 2px 10px black;
+    padding: 20px;
+    width: 28%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center; }
+
+img {
+  border-radius: 50%; }

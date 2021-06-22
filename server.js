@@ -77,6 +77,7 @@ app.use(sassMiddleware({
 // not work.
 app.use(express.static(__dirname+'/assets'))//accessing assets directory as home route
 app.use('/uploads',express.static(__dirname+'/uploads'))//accessing uploads directory as /uploads start point
+app.use('/profile',express.static(__dirname+'/utils'))
 
 app.use('/',require('./routes/index'))//entry of all route end points
 
