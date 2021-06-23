@@ -1,6 +1,6 @@
 const express=require('express')
 const app=express()
-const port=5000
+const port=process.env.PORT||5000
 
 //chat server for chatting using web sockets
 const server=require('http').Server(app)//we want two type of server i.e app and chat(io) so that is done using http.Server

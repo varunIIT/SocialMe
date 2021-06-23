@@ -1,13 +1,13 @@
 const passport=require('passport')
 const GoogleStrategy=require('passport-google-oauth20').Strategy
 const crypto=require('crypto')
-const keys=require('./keys')
 const User=require('../models/user')
+require('dotenv').config()
 passport.use(
     new GoogleStrategy(
       {
-        clientID: keys.clientID,
-        clientSecret: keys.clientSecret,
+        clientID: process.env.CLIENT_ID,
+        clientSecret: process.env.CLIENT_SECERET,
         callbackURL: "/user/redirect/google"
       },
       (accessToken, refreshToken, profile, done) => {

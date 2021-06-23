@@ -1,17 +1,16 @@
 var nodemailer = require('nodemailer');
-const {email,pass}=require('./keys')//to do-change to environment variables later
-
+require('dotenv').config()
 const mailer=(target,otp)=>{
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-          user: email,
-          pass: pass
+          user: process.env.EMAIL,
+          pass:process.env.PASS
         }
       });
       
       var mailOptions = {
-        from: email,
+        from: process.env.EMAIL,
         to: target,
         subject: 'Reset-Password OTP',
         html: `Your OTP to reset password is:<h1>${otp}</h1>`

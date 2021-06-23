@@ -72,7 +72,7 @@ module.exports.changePassword=async (req,res)=>{
             }
             if(req.body.newPassword!=req.body.confirmPassword){
                 req.flash('error',"New Password and Confirm Password don't Match!")
-                return res.redirect('/user/sign-in')
+                return res.redirect('/reset-password/frontend')
             }
             const user=await User.findOne({email:payload.email})
             user.password=req.body.newPassword
