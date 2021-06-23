@@ -1,7 +1,8 @@
 #chatbox {
   height: 360px;
   width: 300px;
-  border: dashed black 1px;
+  box-shadow: 0 0 8px;
+  border-top-left-radius: 12px;
   position: fixed;
   margin-bottom: 66px;
   bottom: 0px;

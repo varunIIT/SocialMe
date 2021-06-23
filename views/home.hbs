@@ -4,12 +4,12 @@
         #users-list{
             width: 30%;
             margin:0 6px;
-            height: 240px;
+            height: 250px;
             overflow-y: scroll;
         }
     {{else}}
          #users-list{
-            width: 30%;
+            width: 32%;
             padding-left:10px;
             overflow-y: scroll;
         }
@@ -21,7 +21,7 @@
         <div id="write-post">
          <h2 class="mb-3">Write Post</h2>
             <form id="new-post-form" action="/post/create" method="POST">
-                <textarea name="content" class="form-control" aria-label="With textarea" rows="16" placeholder="Start writing your post here..." required style="border:solid 1px black; background-color:lightcyan; "></textarea>
+                <textarea name="content" class="form-control" aria-label="With textarea" rows="16" placeholder="Start writing your post here..." required style="box-shadow:2px 2px 5px; background-color:lightcyan; "></textarea>
                 <div class="text-center"><button type="submit" class="btn btn-primary btn-lg mt-4" >Post</button></div>
             </form> 
         </div>
