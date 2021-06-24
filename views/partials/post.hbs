@@ -1,6 +1,7 @@
 <li id="post-{{this.id}}">
     <p class="post-paragraph mt-3">
         <span>{{this.content}}</span><br>
+        <img src="{{user.avatar}}" alt="avatar" onerror=this.src="/profile/default-profile-image.png" width="25px" style="border-radius: 50%;">
         <small><i><a href="/user/profile/{{this.user._id}}">{{this.user.name}}</a></i></small><br>
         {{!-- custom if comparison --}}
         {{#if (eq @root.user._id this.user._id)}}

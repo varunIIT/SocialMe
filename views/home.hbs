@@ -39,7 +39,10 @@
         <h2 class="mb-3">All Users</h2>
         <ol class="list-group list-group-numbered px-4" >
             {{#each profile_users}}
-                <li class="list-group-item" style="background-color: lightcyan"><a href="/user/profile/{{this._id}}">{{this.name}}</a></li>
+                <li class="list-group-item" style="background-color: lightcyan;">
+                    <img src="{{this.avatar}}" alt="avatar" onerror=this.src="/profile/default-profile-image.png" width="25px" style="border-radius: 50%;">
+                    <a href="/user/profile/{{this._id}}">{{this.name}}</a>
+                </li>
             {{/each}}
         </ol>
     </div>

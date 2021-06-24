@@ -4,6 +4,7 @@
        
          {{#if user}}
          <div>
+                <img src="{{user.avatar}}" alt="avatar" onerror=this.src="/profile/default-profile-image.png" width="40px" style="border-radius: 50%;">
                 <a href="/user/Profile/{{user._id}}">{{user.name}}</a>
                 <a href="/user/sign-out">Sign Out</a>
         </div>

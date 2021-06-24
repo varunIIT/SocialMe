@@ -10,7 +10,7 @@ router.post('/create-session',passport.authenticate('local',{failureRedirect:'/u
 router.get('/profile/:id',passport.checkAuthentication,userController.profile)
 router.get('/sign-out',userController.signOut)
 router.post('/update/:id',userController.update)
-router.get('/auth/google',passport.authenticate('google',{scope:['profile','email']}))
+router.get('/auth/google',passport.authenticate('google',{scope:['profile','email'],prompt: 'select_account'}))
 router.get('/redirect/google',passport.authenticate('google',{failureRedirect:'user/sign-in'}),userController.createSession)
 
 module.exports=router

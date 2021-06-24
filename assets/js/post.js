@@ -28,6 +28,7 @@ let newPostDom=(post)=>{
     <li id="post-${post._id}">
         <p class="post-paragraph mt-3">
             <span>${post.content}</span><br>
+            <img src="${post.user.avatar}" alt="avatar" onerror=this.src="/profile/default-profile-image.png" width="25px" style="border-radius: 50%;">
             <small><i><a href="/user/profile/${post.user._id}">${post.user.name}</a></i></small><br>
             <small><a class="delete-post-button me-2" href="/post/delete/${post._id}"><i class="fas fa-trash-alt"></i></a></small>
             <small>

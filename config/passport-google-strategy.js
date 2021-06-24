@@ -13,6 +13,7 @@ passport.use(
       (accessToken, refreshToken, profile, done) => {
         // passport callback function
         //check if user already exists in our db with the given profile ID
+        console.log(profile)
         User.findOne({email: profile.emails[0].value}).then((currentUser)=>{
           if(currentUser){
             //if we already have a record with the given profile ID
@@ -22,7 +23,8 @@ passport.use(
               new User({
                email:profile.emails[0].value,
                name:profile.displayName,
-               password : crypto.randomBytes(20).toString('hex')//password of 20 bytes converted to it's hexadecimal string
+               password : crypto.randomBytes(20).toString('hex'),//password of 20 bytes converted to it's hexadecimal string
+               avatar: profile.photos[0].value//profile picture
               }).save().then((newUser) =>{
                 done(null, newUser);
               });
