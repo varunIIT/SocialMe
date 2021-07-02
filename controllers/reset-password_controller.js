@@ -71,13 +71,13 @@ module.exports.changePassword=async (req,res)=>{
                 return res.status(401)
             }
             if(req.body.newPassword!=req.body.confirmPassword){
-                req.flash('error',"New Password and Confirm Password don't Match!")
-                return res.redirect('/reset-password/frontend')
+                req.flash('resetPassMsg',"New and Confirm Passwords didn't Match!")
+                return res.redirect('/user/sign-in')
             }
             const user=await User.findOne({email:payload.email})
             user.password=req.body.newPassword
             await user.save()
-            req.flash('success','Password Changed Successfully!')
+            req.flash('resetPassMsg','Password Changed Successfully!')
             res.redirect('/user/sign-in')
           })
     }

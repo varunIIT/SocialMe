@@ -27,7 +27,7 @@ otpForm.on('submit', function (e) {
                     otpInput.html(`
                     <div class="mb-3">
                         <label for="otp" class="form-label">Enter OTP</label>
-                        <input type="password" class="form-control" id="otp" aria-describedby="emailHelp" name="otp" required>
+                        <input autocomplete="off" type="password" class="form-control" id="otp" aria-describedby="emailHelp" name="otp" required>
                     </div>`)
                     otpBtn.text('Verify OTP')
                     $(this).attr('action', '/reset-password/verify-otp')
@@ -44,11 +44,11 @@ otpForm.on('submit', function (e) {
                     otpInput.html(`
                     <div class="mb-3">
                         <label for="new-password" class="form-label">New Password</label>
-                        <input type="password" class="form-control" id="new-password" aria-describedby="emailHelp" name="newPassword" required>
+                        <input autocomplete="off" type="password" class="form-control" id="new-password" aria-describedby="emailHelp" name="newPassword" required>
                     </div>
                     <div class="mb-3">
                         <label for="confirm-password" class="form-label">Confirm Password</label>
-                        <input type="password" class="form-control" id="confirm-password" aria-describedby="emailHelp" name="confirmPassword" required>
+                        <input autocomplete="off" type="password" class="form-control" id="confirm-password" aria-describedby="emailHelp" name="confirmPassword" required>
                     </div>
                     `)
                     otpBtn.text('Change Password!')

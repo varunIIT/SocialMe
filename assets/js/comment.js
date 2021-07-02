@@ -9,6 +9,7 @@ let newCommentForm=$('.new-comment-form')
             data:$(this).serialize(),
             success:(data)=>{
                 // console.log(data)
+                $('.comment-box').val('')
                 const newComment=createNewComment(data.data.comment)
                 notify(data)
                 $(`#comments-list-${data.data.comment.post}>ul`).prepend(newComment)
@@ -27,7 +28,7 @@ createCommentAJAX(newCommentForm)
 
 //method to create comment in DOM
 const createNewComment=(comment)=>{
-    return `
+    return`
     <li id="${comment._id}" class="list-group-item p-0" style="width: 70%;">
         <p class="comment-paragraph">
             <span>${comment.content}</span><br>

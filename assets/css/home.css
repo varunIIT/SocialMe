@@ -26,3 +26,10 @@ h2 {
   padding: 0 5px;
   margin: 0;
   background-color: mistyrose; }
+
+#post-textarea {
+  border: solid 1px grey;
+  background-color: lightcyan; }
+
+#post-textarea:focus {
+  border: solid 1px lightgrey; }

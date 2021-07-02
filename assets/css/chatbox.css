@@ -21,14 +21,14 @@
       padding: 5px;
       margin: 10px 6px;
       background-color: lightcyan;
-      box-shadow: 2px 2px 5px;
+      box-shadow: 1px 1px 4px;
       width: 55%;
       border-radius: 5px; }
     #chatbox #chat-messages .receiver {
       padding: 5px;
       margin: 10px 6px;
       background-color: mistyrose;
-      box-shadow: 2px 2px 5px;
+      box-shadow: 1px 1px 4px;
       width: 55%;
       margin-left: auto;
       border-radius: 5px; }

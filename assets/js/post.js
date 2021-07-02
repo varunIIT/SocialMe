@@ -8,6 +8,7 @@ newPostForm.on('submit',(e)=>{
         data:newPostForm.serialize(),
         success:(data)=>{
             //console.log(data)
+            $('#post-textarea').val('')
             const newPost=newPostDom(data.data.post)
             $('#posts-list>ul').prepend(newPost)
             notify(data)
@@ -38,9 +39,9 @@ let newPostDom=(post)=>{
     
         <form class="new-comment-form" action="/comment/create" method="POST">
             <div class="input-group mb-2">
-                <input type="text" class="form-control" placeholder="Comment here..." name="content" required style="background-color:lightyellow;">
+                <input autocomplete="off" type="text" class="form-control comment-box" placeholder="Comment here..." name="content" required style="background-color:lightyellow;">
                 <input type="hidden" name="postId" value="${post._id}">
-                <button class="btn btn-primary" type="submit" id="button-addon2">Comment</button>
+                <button class="btn btn-primary" type="submit" id="button-addon2"><i class="far fa-comment-dots"></i></button>
             </div>
         </form>
         <div id="comments-list-${post._id}">

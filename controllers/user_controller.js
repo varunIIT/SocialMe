@@ -10,9 +10,9 @@ module.exports.signUp=(req,res)=>{
 }
 module.exports.signIn=(req,res)=>{
     if(req.isAuthenticated()){//checking if user is already signed-in or not 
-        return res.redirect('/user/profile')//if user is already signed in redirect to profile page
+        return res.redirect(`/user/profile/${req.user._id}`)//if user is already signed in redirect to profile page
     }
-    res.render('home_sign_in',{title:'sign-in'})
+    res.render('home_sign_in',{title:'sign-in',resetPassMsg:req.flash('resetPassMsg')})
 }
 module.exports.profile=async (req,res)=>{
     const profile_user=await User.findById(req.params.id)

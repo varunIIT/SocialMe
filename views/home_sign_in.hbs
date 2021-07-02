@@ -3,6 +3,14 @@
     <div id="sign-in-form">
         <h2 class="text-center"><i class="fas fa-sign-in-alt"></i> Sign In</h2>
         <form action="/user/create-session" method="POST">
+            {{#if resetPassMsg}}
+            <div class="alert alert-warning alert-dismissible fade show p-1 my-2" role="alert">
+                {{resetPassMsg}}
+                <button type="button" class="btn-close p-0 pe-2 my-auto" data-bs-dismiss="alert" aria-label="Close"
+                    style="height: 100%;"></button>
+            </div>
+
+            {{/if}}
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" required>
@@ -15,13 +23,14 @@
             <button class="btn btn-danger mt-3" style="width: 100%;" type="submit">Sign In</button>
         </form>
         <div class="my-3 text-center">OR</div>
-            <div class="text-center">
-                <a class="btn btn-light" href="/user/auth/google" role="button" style="text-transform:none;border: solid 1px grey;">
-                    <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in"
-                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
-                    Sign In with Google
-                </a>
-            </div>
+        <div class="text-center">
+            <a class="btn btn-light" href="/user/auth/google" role="button"
+                style="text-transform:none;border: solid 1px grey;">
+                <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in"
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+                Sign In with Google
+            </a>
+        </div>
         <div class="text-center my-2"><a href="/reset-password/frontend">Forget Password!</a></div>
 
     </div>
