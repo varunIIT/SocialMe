@@ -29,7 +29,7 @@ app.use(expressSession({
     },
     //link between expressSession and MongoDB to store user's session in MongoDB
     store: MongoStore.create({
-        mongoUrl: 'mongodb://localhost/SocialMe',
+        mongoUrl: process.env.MONGOURI||'mongodb://localhost/SocialMe',
         autoRemove: 'native'//By this mongoDb automatically deletes expired sessions
     })
 }))
