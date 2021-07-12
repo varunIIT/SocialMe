@@ -4,7 +4,7 @@ class chatEngine {
         this.userEmail = userEmail
         this.userName=userName
 
-        this.socket = io.connect('http://localhost:5000')
+        this.socket = io.connect('https://socialme-v1.herokuapp.com/'||'http://localhost:5000')
         this.connectionHandler()
     }
     connectionHandler() {
