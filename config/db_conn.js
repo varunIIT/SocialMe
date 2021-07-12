@@ -1,5 +1,5 @@
 const mongoose=require('mongoose')
-mongoose.connect(process.env.PORT||'mongodb://localhost/SocialMe', {
+mongoose.connect(process.env.MONGOURI||'mongodb://localhost/SocialMe', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
