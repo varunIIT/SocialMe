@@ -8,7 +8,7 @@ passport.use(
       {
         clientID: process.env.CLIENT_ID,
         clientSecret: process.env.CLIENT_SECERET,
-        callbackURL: process.env.REDIRECT_URI||"http://localhost/user/redirect/google"
+        callbackURL: process.env.REDIRECT_URI||"http://localhost:5000/user/redirect/google"
       },
       (accessToken, refreshToken, profile, done) => {
         // passport callback function
